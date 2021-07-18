@@ -1,14 +1,11 @@
 const express = require('express');
 const routes = express.Router(); 
 
-const basePath = __dirname + '/views'
+const views = __dirname + '/views/'
 
-routes.get('/', (request, response) => response.sendFile(basePath + "/index.html"))
-routes.get('/job', (request, response) => response.sendFile(basePath + "/job.html"))
-routes.get('/job/edit', (request, response) => response.sendFile(basePath + "/job-edit.html"))
-routes.get('/profile', (request, response) => response.sendFile(basePath + "/profile.html"))
+routes.get('/', (req, res) => res.render(views + "index.ejs"))
+routes.get('/job', (req, res) => res.render(views + "job.ejs"))
+routes.get('/job/edit', (req, res) => res.render(views + "job-edit.ejs"))
+routes.get('/profile', (req, res) => res.render(views + "profile.ejs"))
 
-routes.get('/index.html', (request, response) => {
-    return response.redirect('/')
-})
 module.exports = routes;
